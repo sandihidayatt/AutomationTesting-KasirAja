@@ -10,7 +10,6 @@
 //
 Cypress.Commands.add('login', () => {
     cy.visit('https://kasirdemo.belajarqa.com')
-    cy.visit('https://kasirdemo.belajarqa.com')
     cy.get('#email').type('subur@gmail.com') //email
     cy.get('#password').type('12345678') //password
     cy.get('.chakra-button').click() // login

@@ -1,0 +1,9 @@
+{
+    "email" : "subur@gmail.com",
+    "password" : "12345678",
+    "url" : "https://kasirdemo.belajarqa.com",
+    "invalidEmail" : "bukansubur@gmail.com",
+    "invalidPassword" : "87654321",
+    "invalidFormatEmail" : "subur@gmail",
+    "namaToko" : "Toko Subur"
+}

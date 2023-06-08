@@ -14,6 +14,12 @@ Cypress.Commands.add('login', () => {
     cy.get('#password').type('12345678') //password
     cy.get('.chakra-button').click() // login
 })
+
+Cypress.Commands.add('input', (locator,value) =>{
+    cy.get(locator)
+    .should('be.visible')
+    .type(value)
+})
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })

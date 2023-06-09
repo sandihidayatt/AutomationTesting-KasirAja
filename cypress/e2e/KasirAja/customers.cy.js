@@ -1,45 +1,45 @@
 import 'cypress-xpath';
+import pageCustomer from '../../support/PageObject/pageCustomer.cy';
+const dataCustomer = require('../../fixtures/KasirAja/dataTestCustomer.json')
 
 describe('Customers Functionality', () => {
+  const customer = new pageCustomer
   it('Success Add Customer', () => {
-    cy.login()
-    cy.get(':nth-child(9) > .css-ewi1jp').click() //menu pelanggan
-    cy.get('.css-1piskbq').click() // tambah
-    cy.get('#nama').type('Bayu')
-    cy.xpath("//input[@id='no.hp']").type('089912345678') 
-    cy.get('#alamat').type('Bandung') //alamat
-    cy.get('#keterangan').type('Pelanggan Baru') //keterangan
-    cy.get('.chakra-button').click() //simpan
+    cy.login() // login
+    customer.clickPelanggan() //menu pelanggan
+    customer.clickTambah() // tambah
+    customer.inputNama(dataCustomer.name)
+    cy.xpath("//input[@id='no.hp']").type(dataCustomer.noHp) // no hp
+    customer.inputAlamat(dataCustomer.alamat) //alamat
+    customer.inputKeterangan(dataCustomer.keterangan) //keterangan
+    customer.clickSimpan() //simpan
     //validasi
-    cy.get('#chakra-toast-manager-top-right').should('be.visible') //message
-    cy.get('tbody.css-0 > :nth-child(1) > :nth-child(1)').should('have.text','Bayu')
+    customer.checkMessage() //message
+    cy.get('tbody.css-0 > :nth-child(1) > :nth-child(1)').should('have.text','Bayu') // check velue tabel
   })
 
   it('Add customer with empty nama', () => {
-    cy.login()
-    cy.get(':nth-child(9) > .css-ewi1jp').click() //menu pelanggan
-    cy.get('.css-1piskbq').click() // tambah
-    cy.get('#nama').clear()
-    cy.xpath("//input[@id='no.hp']").type('089912345678') 
-    cy.get('#alamat').type('Bandung') //alamat
-    cy.get('#keterangan').type('Pelanggan Baru') //keterangan
-    cy.get('.chakra-button').click() //simpan
+    cy.login() // login
+    customer.clickPelanggan() //menu pelanggan
+    customer.clickTambah() // tambah
+    cy.xpath("//input[@id='no.hp']").type('089912345678') //no hp
+    customer.inputAlamat(dataCustomer.alamat) //alamat
+    customer.inputKeterangan(dataCustomer.keterangan) //keterangan
+    customer.clickSimpan() //simpan
     //validasi
-    cy.get('.chakra-alert').should('be.visible')
-    cy.get('.chakra-alert').should('have.text','"name" is not allowed to be empty')
+    customer.checkAlertEmtyName() // check error empty name
   })
 
   it('Edit customer with invalid format no hp', () => {
-    cy.login()
-    cy.get(':nth-child(9) > .css-ewi1jp').click() //menu pelanggan
-    cy.get('.css-1piskbq').click() // tambah
-    cy.get('#nama').type('Bayu')
+    cy.login() // login
+    customer.clickPelanggan() //menu pelanggan
+    customer.clickTambah() // tambah
+    customer.inputNama(dataCustomer.name)
     cy.xpath("//input[@id='no.hp']").type('NoKu') 
-    cy.get('#alamat').type('Bandung') //alamat
-    cy.get('#keterangan').type('Pelanggan Baru') //keterangan
-    cy.get('.chakra-button').click() //simpan
+    customer.inputAlamat(dataCustomer.alamat) //alamat
+    customer.inputKeterangan(dataCustomer.keterangan) //keterangan
+    customer.clickSimpan() //simpan
     //validasi
-    cy.get('.chakra-alert').should('be.visible')
-    cy.get('.chakra-alert').should('have.text','"phone" must be a number')
+    customer.checkInvalidFormatNoHp() // check invalid format no hp
   })
 })

@@ -1,5 +1,5 @@
-class pageSales {
-    sales = '[href="/purchases"] > .css-ewi1jp'
+class pagepurchase {
+    purchase = '[href="/purchases"] > .css-ewi1jp'
     tambah = '.chakra-button'
     produk = '.css-1xhj18k > .chakra-button'
     row1 = 'tbody.css-0 > :nth-child(1) > :nth-child(1)'
@@ -9,8 +9,8 @@ class pageSales {
     message = '#chakra-toast-manager-top-right'
     search = '.css-cipbx3 > .chakra-input__group > .chakra-input'
 
-    clickSales(){
-        cy.get(this.sales).click()
+    clickpurchase(){
+        cy.get(this.purchase).click()
     }
 
     clickTambah(){
@@ -54,4 +54,4 @@ class pageSales {
     }
 
 }
-export default pageSales
+export default pagepurchase

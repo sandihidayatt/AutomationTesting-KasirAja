@@ -1,53 +1,53 @@
 import 'cypress-xpath';
-import pageSales from '../../support/PageObject/pagePurchase.cy';
+import pagepurchase from '../../support/PageObject/pagePurchase.cy';
 
 describe('Purchase Functionality', () => {
-  const sales = new pageSales
+  const purchase = new pagepurchase
   it('Success add purchase', () => {
     cy.login() //login
-    sales.clickSales() //menu sales
-    sales.clickTambah() // tambah buton
-    sales.clickProduk() // pilih produk
-    sales.clickRow1() // pilih produk di tabel baris 1
-    sales.clickProduk() // pilih produk 
-    sales.clickRow2() // pilih produk di tabel baris 2
-    sales.inputCatatan('Lunas') // catatan
-    sales.clickSimpan() // simpan
+    purchase.clickpurchase() //menu purchase
+    purchase.clickTambah() // tambah buton
+    purchase.clickProduk() // pilih produk
+    purchase.clickRow1() // pilih produk di tabel baris 1
+    purchase.clickProduk() // pilih produk 
+    purchase.clickRow2() // pilih produk di tabel baris 2
+    purchase.inputCatatan('Lunas') // catatan
+    purchase.clickSimpan() // simpan
     //validasi
-    sales.checkMessage() //message success
+    purchase.checkMessage() //message success
   })
 
   it('Add purchase with empty product', () => {
     cy.login()
-    sales.clickSales() //menu sales
-    sales.clickTambah() // tambah buton
-    sales.inputCatatan('Lunas') // catatan
-    sales.clickSimpan() // simpan
+    purchase.clickpurchase() //menu purchase
+    purchase.clickTambah() // tambah buton
+    purchase.inputCatatan('Lunas') // catatan
+    purchase.clickSimpan() // simpan
     //validasi
-    sales.checkMessageEmpty() //message
+    purchase.checkMessageEmpty() //message
   })
 
   it('Add purchase with empty no invoice', () => {
     cy.login()
-    sales.clickSales() //menu sales
-    sales.clickTambah() // tambah buton
-    sales.clickProduk() // pilih produk
-    sales.clickRow1() // pilih produk di tabel baris 1
-    sales.clickProduk() // pilih produk 
-    sales.clickRow2() // pilih produk di tabel baris 2
-    sales.inputCatatan('Lunas') // catatan
+    purchase.clickpurchase() //menu purchase
+    purchase.clickTambah() // tambah buton
+    purchase.clickProduk() // pilih produk
+    purchase.clickRow1() // pilih produk di tabel baris 1
+    purchase.clickProduk() // pilih produk 
+    purchase.clickRow2() // pilih produk di tabel baris 2
+    purchase.inputCatatan('Lunas') // catatan
     cy.xpath('/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/div[1]/input[1]').clear() // remove no invoice
-    sales.clickSimpan() // simpan
+    purchase.clickSimpan() // simpan
     //validasi
-    sales.checkMessageError()//message
+    purchase.checkMessageError()//message
   })
 
   it('Success search purchase', () => {
     cy.login()
-    sales.clickSales() //menu sales
-    sales.inputSearch('INV/9/5/2023/1686314901') // input search
+    purchase.clickpurchase() //menu purchase
+    purchase.inputSearch('INV/10/5/2023/1686357502') // input search
     //validasi
-    cy.get('tbody.css-0 > .css-0 > :nth-child(1)').should('have.text','INV/9/5/2023/1686314901') // check hasil pencarian
+    cy.get('tbody.css-0 > .css-0 > :nth-child(1)').should('have.text','INV/10/5/2023/1686357502') // check hasil pencarian
   })
 
 })

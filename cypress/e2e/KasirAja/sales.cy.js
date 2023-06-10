@@ -1,49 +1,51 @@
 import 'cypress-xpath';
+import pageSales from '../../support/PageObject/pageSales.cy';
+
 
 describe('Sales Functionality', () => {
+  const sales = new pageSales
   it('Success add sales', () => {
     cy.login()
-    cy.get('[href="/sales"] > .css-ewi1jp').click() //menu penjualan
-    cy.get('.chakra-button').click() // tambah
-    cy.get('#pelanggan').click()
-    cy.get('tbody.css-0 > :nth-child(1) > :nth-child(1)').click({force:true})
-    cy.get('.css-1xhj18k > .chakra-button').click()
-    cy.get('tbody.css-0 > :nth-child(1) > :nth-child(1)').click({force:true})
-    cy.get('.css-1xhj18k > .chakra-button').click()
-    cy.get('tbody.css-0 > :nth-child(2) > :nth-child(1)').click({force:true})
-    cy.get('#diskon').type(10000)
-    cy.get('.chakra-textarea').type('Lunas')
-    cy.get('.css-rltemf > .chakra-input').type('10000000')
-    cy.get('.css-n4rzf0 > .chakra-button').click()
-    cy.get('#chakra-toast-manager-top-right').should('be.visible') //message
-  //   cy.get('.chakra-modal__footer > .chakra-button').click()
+    sales.clickPenjualan() //menu penjualan
+    sales.clickTambah() // tambah
+    sales.clickPelanggan() //pelanggan
+    sales.clickTabelPelanggan() // tabel pelanggan
+    sales.clickProduk() //produk
+    sales.clickTabelProduk1() // tabel produk baris ke 1
+    sales.clickProduk() //produk
+    sales.clickTabelProduk2() // tabel produk baris ke 2
+    sales.inputDiskon(10000) // diskon
+    sales.inputDiskon('Lunas') // catatan
+    sales.bayar(10000000) // input bayar
+    sales.clickBayar() // click bayar
+    sales.checkMessage() //message
   })
 
   it('Add sales with empty product', () => {
     cy.login()
-    cy.get('[href="/sales"] > .css-ewi1jp').click() //menu penjualan
-    cy.get('.chakra-button').click() // tambah
-    cy.get('.css-n4rzf0 > .chakra-button').click() //simpan
+    sales.clickPenjualan() //menu penjualan
+    sales.clickTambah() // tambah
+    sales.clickBayar() // click bayar
     //validasi
-    cy.get('#chakra-toast-manager-top-right').should('be.visible') //message
+    sales.checkMessage() //message //message
   })
 
   it('Add sales with jumlah bayar smaller then subtotal', () => {
     cy.login()
-    cy.get('[href="/sales"] > .css-ewi1jp').click() //menu penjualan
-    cy.get('.chakra-button').click() // tambah
-    cy.get('#pelanggan').click()
-    cy.get('tbody.css-0 > :nth-child(1) > :nth-child(1)').click({force:true})
-    cy.get('.css-1xhj18k > .chakra-button').click()
-    cy.get('tbody.css-0 > :nth-child(1) > :nth-child(1)').click({force:true})
-    cy.get('.css-1xhj18k > .chakra-button').click()
-    cy.get('tbody.css-0 > :nth-child(2) > :nth-child(1)').click({force:true})
-    cy.get('#diskon').type(10000)
-    cy.get('.chakra-textarea').type('Lunas')
-    cy.get('.css-rltemf > .chakra-input').type('1000')
-    cy.get('.css-n4rzf0 > .chakra-button').click()
+    sales.clickPenjualan() //menu penjualan
+    sales.clickTambah() // tambah
+    sales.clickPelanggan() //pelanggan
+    sales.clickTabelPelanggan() // tabel pelanggan
+    sales.clickProduk() //produk
+    sales.clickTabelProduk1() // tabel produk baris ke 1
+    sales.clickProduk() //produk
+    sales.clickTabelProduk2() // tabel produk baris ke 2
+    sales.inputDiskon(10000) // diskon
+    sales.inputDiskon('Lunas') // catatan
+    sales.bayar(1000) // input bayar
+    sales.clickBayar() // click bayar
     //validasi
-    cy.get(':nth-child(2) > .chakra-heading').should('be.visible')
+    sales.checkMessageErr() //message
   })
 
 

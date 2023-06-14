@@ -1,9 +1,8 @@
 # AutomationTesting-KasirAja
 
 **Report Automation Testing KasirAja**
-![image](https://github.com/sandihidayatt/AutomationTesting-KasirAja/assets/73646054/c47c2a60-9229-42ea-b9fa-c60572547c2a)
-![image](https://github.com/sandihidayatt/AutomationTesting-KasirAja/assets/73646054/9ad1c6df-e141-4139-a105-e0d4345d7d21)
-![image](https://github.com/sandihidayatt/AutomationTesting-KasirAja/assets/73646054/551ac4a7-d711-4caf-a96a-d1e847b20dde)
+![image](https://github.com/sandihidayatt/AutomationTesting-KasirAja/assets/73646054/e57d1d09-498b-4dbd-abe8-f3bb11c30f81)
+https://drive.google.com/file/d/19awQLwkGYeoVF49QP1UgegmdqehuSLPo/view?usp=drive_link
 
 **Url kasirAja**
 https://kasirdemo.belajarqa.com/

@@ -10,7 +10,7 @@ Step Install Cypress
 
 https://drive.google.com/file/d/19awQLwkGYeoVF49QP1UgegmdqehuSLPo/view?usp=drive_link
 
-**Link Test Case and Manual Testing**
+**Test Case and Manual Testing**
 
 https://docs.google.com/spreadsheets/d/1TdMof26enPH9helVXPOV8q9S7qVAQizWKJoqYou3VQo/edit?usp=drive_link
 

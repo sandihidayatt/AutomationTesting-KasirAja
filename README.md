@@ -1,11 +1,10 @@
 # AutomationTesting-KasirAja
 
 Step Install Cypress
-
-Create new project or new folder
-Initialize a new Node.js project -> npm init -y
-Install Cypress -> npm install cypress --save-dev
-Verify the Installation -> npx cypress open
+1. Create new project or new folder
+2. Initialize a new Node.js project -> npm init -y
+3. Install Cypress -> npm install cypress --save-dev
+4. Verify the Installation -> npx cypress open
 
 **Report Automation Testing KasirAja**
 https://drive.google.com/file/d/19awQLwkGYeoVF49QP1UgegmdqehuSLPo/view?usp=drive_link
